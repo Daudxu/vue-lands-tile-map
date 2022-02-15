@@ -22,3 +22,4 @@ jobs:
           force_update: true
           debug: true
           account_type: org
+          clone_style: "ssh"
