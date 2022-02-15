@@ -19,6 +19,6 @@ jobs:
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}
           white_list: 'nft-virtual-land-tile-map-for-vue'
-          force_update: false
+          force_update: true
           debug: true
           account_type: org
