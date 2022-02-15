@@ -1,0 +1,24 @@
+name: Build app and deploy to aliyun
+on:
+  #监听push操作
+  push:
+    branches:
+      # master分支，你也可以改成其他分支
+      - master
+jobs:
+  Sync-Code-To-Gitee-job:
+    # runs-on 指定job任务运行所需要的虚拟机环境
+    runs-on: ubuntu-latest
+    steps:
+      # 同步代码到 gitee
+      - name: Black list
+        uses: Yikun/hub-mirror-action@master
+        with:
+          src: github/Daudxu
+          dst: gitee/coding-365
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token: ${{ secrets.GITEE_TOKEN }}
+          white_list: 'nft-virtual-land-tile-map-for-vue'
+          force_update: false
+          debug: true
+          account_type: org
