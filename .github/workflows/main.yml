@@ -24,15 +24,3 @@ jobs:
         force_update: true  # 启用后，强制同步，即强制覆盖目的端仓库
         static_list: 'nft-virtual-land-tile-map-for-vue'  # 静态同步列表，在此填写需要同步的仓库名称，可填写多个
         timeout: '600s'  # git超时设置，超时后会自动重试git操作
-#       - name: Black list
-#         uses: Yikun/hub-mirror-action@master
-#         with:
-#           src: github/Daudxu
-#           dst: gitee/coding-365
-#           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-#           dst_token: ${{ secrets.GITEE_TOKEN }}
-#           white_list: 'nft-virtual-land-tile-map-for-vue'
-#           force_update: true
-#           debug: true
-#           account_type: org
-#           clone_style: "ssh"
