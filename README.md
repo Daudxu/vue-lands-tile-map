@@ -3,7 +3,7 @@
 
 # nft-lands-tile-map-component
 
-Hanger's vue-components.
+vue-components.
 
 ## Installation
 
