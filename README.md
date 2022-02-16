@@ -1,21 +1,21 @@
 [![npm][npm]][npm-url]
 [![node][node]][node-url]
 
-# nft-lands-tile-map-component
+# nft-lands-tile-map-vue-component
 
 vue-components.
 
 ## Installation
 
 ```
-npm install nft-lands-tile-map-component
+npm install nft-lands-tile-map-vue-component
 ```
 
 ## Import
 
 ```
-import 'nft-lands-tile-map-component/dist/nft-lands-tile-map-component.min.css';
-import { Loading, ... } from 'nft-lands-tile-map-component';
+import 'nft-lands-tile-map-component/dist/nft-lands-tile-map-vue-component.min.css';
+import { Loading, ... } from 'nft-lands-tile-map-vue-component';
 ```
 
 ## Content
