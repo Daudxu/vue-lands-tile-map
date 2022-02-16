@@ -9,7 +9,7 @@
 <script>
 
 import { Loading } from '@/components';
-// import { Loading } from '../../dist/nft-lands-tile-map-component.min.js';
+// import { Loading } from '../../dist/nft-lands-tile-map-vue-component.min.js';
 
 export default {
   name: 'el-loading',

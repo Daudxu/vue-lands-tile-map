@@ -1,5 +1,5 @@
 {
-  "name": "nft-lands-tile-map-component",
+  "name": "nft-lands-tile-map-vue-component",
   "version": "0.1.10",
   "author": "Daudxu <875126243@qq.com> (https://github.com/Daudxu)",
   "description": "nft virtual land tile map for vue component",
@@ -18,7 +18,7 @@
     "url": "https://github.com/Daudxu/nft-virtual-land-tile-map-for-vue.git"
   },
   "private": false,
-  "main": "dist/nft-lands-tile-map-component.min.js",
+  "main": "dist/nft-lands-tile-map-vue-component.min.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",

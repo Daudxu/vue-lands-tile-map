@@ -25,8 +25,8 @@ const webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.build.assetsRoot,
     publicPath: config.build.assetsPublicPath,
-    filename: 'nft-lands-tile-map-component.min.js',
-    library: 'nft-lands-tile-map-component',
+    filename: 'nft-lands-tile-map-vue-component.min.js',
+    library: 'nft-lands-tile-map-vue-component',
     libraryTarget: 'umd'
   },
   plugins: [
@@ -43,7 +43,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // extract css into its own file
     new ExtractTextPlugin({
       // filename: utils.assetsPath('css/[name].[contenthash].css')
-       filename: 'nft-lands-tile-map-component.min.css'
+       filename: 'nft-lands-tile-map-vue-component.min.css'
     }),
     new OptimizeCSSPlugin()
   ]

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="tab"><router-link to="/loading">加载状态组件</router-link></div>
+    <div class="tab"><router-link to="/landsTileMap">NFT Lands Tile Map Component</router-link></div>
+    <div class="tab"><router-link to="/loading">Loading Component</router-link></div>
   </div>
 </template>
 
@@ -12,12 +13,11 @@ export default {
 
 <style lang="scss" scoped>
 .tab {
+  color: aquamarine;
+  border: 1px solid rgb(35, 202, 49);
+  width: 300px;
   text-align: center;
-  padding: 10px;
-  margin: 5px 0;
-  background-color: #F2F2F2;
-  a {
-    color: #7e8c8d;
-  }
+  margin-top: 20px;
+  margin-left: 30px;
 }
 </style>

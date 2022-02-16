@@ -14,7 +14,7 @@ npm install nft-lands-tile-map-vue-component
 ## Import
 
 ```
-import 'nft-lands-tile-map-component/dist/nft-lands-tile-map-vue-component.min.css';
+import 'nft-lands-tile-map-vue-component/dist/nft-lands-tile-map-vue-component.min.css';
 import { Loading, ... } from 'nft-lands-tile-map-vue-component';
 ```
 

@@ -13,7 +13,7 @@ opensea ERC-721 ERC-1155
   </div>
 </template>
 <script>
-import { LandsTileMap } from 'nft-lands-tile-map-component';
+import { LandsTileMap } from 'nft-lands-tile-map-vue-component';
 export default {
   ...
   components: {
