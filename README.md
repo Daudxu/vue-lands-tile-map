@@ -20,7 +20,7 @@ import { Loading, ... } from 'nft-lands-tile-map-component';
 
 ## Content
 
-[LandsTileMap 透明提示组件](./src/components/Hint)
+[LandsTileMap 虚拟土地地块组件](./src/components/Hint)
 
 [Loading 加载状态组件](./src/components/Loading)
 
