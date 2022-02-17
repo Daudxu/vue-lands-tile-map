@@ -64,7 +64,6 @@ export default {
       paintingX: this.startPaintingX,
       paintingY: this.startPaintingY,
       scale: this.tileScale
-      // paintingY: this.startPaintingY
     };
   },
   // watch: {
@@ -100,8 +99,6 @@ export default {
       this.ctx.beginPath();
       for (let row = 0; row < map.length; row++) {
         for (let column = 0; column < map[row].length; column++) {
-          // this.ctx.fillText(column, this.startPaintingX + (column * (this.tileSize * this.imgScale)), (this.tileSize * this.imgScale));
-          // this.ctx.fillText(column, this.startPaintingY + (this.tileSize * this.imgScale), (row * (this.tileSize * this.imgScale)));
           const tileMapVal = map[row][column];
           this.ctx.fillStyle = this.getGridTileColor(tileMapVal);
           var SizeimgX = this.paintingX + (column * this.tileSize * this.scale);

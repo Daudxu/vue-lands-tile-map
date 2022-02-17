@@ -1,7 +1,8 @@
 <template>
   <div>
-    <div class="tab"><router-link to="/landsTileMap">NFT Lands Tile Map Component</router-link></div>
-    <div class="tab"><router-link to="/loading">Loading Component</router-link></div>
+    <div class="tab">
+      <router-link to="/landsTileMap">NFT Lands Tile Map Component</router-link>
+    </div>
   </div>
 </template>
 

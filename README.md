@@ -20,9 +20,8 @@ import { LandsTileMap  from 'nft-lands-tile-map-vue-component';
 
 ## Content
 
-[LandsTileMap 虚拟土地地块组件](./src/components/Hint)
+[LandsTileMap 虚拟土地地块组件](./src/components/LandsTileMap)
 
-[Loading 加载状态组件](./src/components/Loading)
 
 ## Demo
 
@@ -37,7 +36,7 @@ npm run dev
 
 ## Changelog
 
-### 2018.10.22
+### 2022.02.17
 
 > v0.0.1 \* 页面置顶组件
 
