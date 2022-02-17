@@ -4,7 +4,7 @@
     <div>
       <LandsTileMap :tileMapMapmatrix="tileMapMapmatrix"
                     :tiledDigitalColormap="tiledDigitalColormap"
-                    :tileSize="tileSize">
+                    :tileSize="tileSize"  @handleClickTile="handleClickTile" >
       </LandsTileMap>
     </div>
   </div>
@@ -48,7 +48,12 @@ export default {
   },
   components: {
     LandsTileMap
-  }
+  },
+   methods: {
+    handleClickTile (e) {
+       console.log(e)
+    }
+ }
 };
 </script>
 

@@ -4,8 +4,8 @@
     <canvas id="titleMapCanvas"
             class="titleMapCanvas"
             ref="titleMapCanvas"
-            :width="canvasWidth"
-            :height="canvasHeight">
+            :width="canvasW"
+            :height="canvasH">
     </canvas>
     <!-- canvas end -->
   </div>
@@ -63,33 +63,44 @@ export default {
       map: this.tileMapMapmatrix,
       paintingX: this.startPaintingX,
       paintingY: this.startPaintingY,
-      scale: this.tileScale
+      size: this.tileSize,
+      scale: this.tileScale,
+      canvasW: this.canvasWidth,
+      canvasH: this.canvasHeight,
+      model: {}
     };
   },
-  // watch: {
-  //   tileMapMapmatrix: {
-  //     deep: true,
-  //     handler (newVal, oldVal) {
-  //       this.tileMapMapmatrix = newVal;
-  //     }
-  //   }
-  // },
+  watch: {
+    // tileMapMapmatrix: {
+    //   deep: true,
+    //   handler (newVal, oldVal) {
+    //     this.tileMapMapmatrix = newVal;
+    //   }
+    // }
+  },
   mounted () {
     this.myCanvas = this.$refs.titleMapCanvas;
     this.ctx = this.myCanvas.getContext('2d');
     this.drawImage(this.tileMapMapmatrix);
     this.canvasEventsInit();
-    // window.onresize = function () {
-    //   _this.resizeCanvas();
-    // };
-  },
-  methods: {
-    resizeCanvas () {
+    var _this = this
+    window.onresize = function () {
       let browserWidth = window.innerWidth;
       let browserHeight = window.innerHeight;
-      this.canvasWidth = browserWidth;
-      this.canvasHeight = browserHeight;
-      this.drawImage(this.tileMapMapmatrix);
+      _this.resizeCanvas(browserWidth,browserHeight);
+    };
+  },
+  methods: {
+    resizeCanvas (w,h) {
+      var _this = this
+      this.canvasW = w;
+      this.canvasH = h;
+      var imgData = this.ctx.getImageData(0,0,this.myCanvas.width,this.myCanvas.height);
+      this.myCanvas.width = this.canvasW;
+      this.myCanvas.height = this.canvasH;
+      setTimeout(()=>{
+          _this.ctx.putImageData(imgData,0,0)
+      }, 0)
     },
     async drawImage (map) {
       var _this = this;
@@ -101,6 +112,11 @@ export default {
         for (let column = 0; column < map[row].length; column++) {
           const tileMapVal = map[row][column];
           this.ctx.fillStyle = this.getGridTileColor(tileMapVal);
+          if(typeof(this.model.SizeimgX) !== 'undefined'){
+            if(_this.model.SizeimgX === column && _this.model.SizeimgY === row){
+                  this.ctx.fillStyle = "#3704ff";
+            }
+          }
           var SizeimgX = this.paintingX + (column * this.tileSize * this.scale);
           var SizeimgY = this.paintingY + (row * this.tileSize * this.scale);
           this.ctx.fillRect(SizeimgX, SizeimgY, (1 * this.tileSize * this.scale), (1 * this.tileSize * this.scale));
@@ -108,6 +124,9 @@ export default {
           this.ctx.stroke();
         }
       }
+       var nc = document.createElement("canvas");
+       this.ctx.drawImage(nc,0,0);
+      this.myCanvas.addEventListener('click', this.handleClickTile);
     },
     canvasEventsInit () {
       var _this = this;
@@ -123,6 +142,10 @@ export default {
           var y = (evt.clientY - pos.y) * 2 + imgy;
           _this.paintingX = x;
           _this.paintingY = y;
+          if(this.clickHistory){
+             this.ctx.fillStyle = "#3704ff";
+             this.ctx.fillRect(SizeimgX, SizeimgY, (1 * this.size * this.scale), (1 * this.size * this.scale));
+           }
           _this.drawImage(_this.map);
         };
         canvas.onmouseup = function () {
@@ -142,10 +165,28 @@ export default {
             _this.scale -= 0.1;
           }
         }
+  
+ 
         _this.drawImage(_this.map);
-        event.preventDefault && event.preventDefault();
+     
+ 
+        // event.preventDefault && event.preventDefault();
         return false;
       };
+    },
+    handleClickTile(event){
+        let clickX = Math.floor((event.offsetX - this.paintingX) / (this.size * this.scale))
+        let clickY = Math.floor((event.offsetY - this.paintingY) / (this.size * this.scale))
+       	this.$set(this.model,'SizeimgX', clickX)
+       	this.$set(this.model,'SizeimgY', clickY)
+        this.drawImage(this.map);
+        this.$emit('handleClickTile',{
+          clickX:clickX,
+          clickY:clickY,
+          event:event,
+        });
+
+
     },
     getGridTileColor (tileMapVal) {
       var gridTileColor = this.gridDefaultTileColor;
