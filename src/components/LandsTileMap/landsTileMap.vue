@@ -14,12 +14,6 @@
 <script>
 export default {
   name: 'landsTileMap',
-  data () {
-    return {
-      myCanvas: null,
-      ctx: null,
-    };
-  },
   props: {
     tileMapMapmatrix: {
       type: Array,
@@ -62,18 +56,30 @@ export default {
       default: '#ffffff'
     },
   },
-  watch: {
-    tileMapMapmatrix: {
-      deep: true,
-      handler (newVal, oldVal) {
-        this.tileMapMapmatrix = newVal;
-      }
-    }
+  data () {
+    return {
+      myCanvas: null,
+      ctx: null,
+      map: this.tileMapMapmatrix,
+      paintingX: this.startPaintingX,
+      paintingY: this.startPaintingY,
+      scale: this.tileScale
+      // paintingY: this.startPaintingY
+    };
   },
+  // watch: {
+  //   tileMapMapmatrix: {
+  //     deep: true,
+  //     handler (newVal, oldVal) {
+  //       this.tileMapMapmatrix = newVal;
+  //     }
+  //   }
+  // },
   mounted () {
     this.myCanvas = this.$refs.titleMapCanvas;
     this.ctx = this.myCanvas.getContext('2d');
     this.drawImage(this.tileMapMapmatrix);
+    this.canvasEventsInit();
     // window.onresize = function () {
     //   _this.resizeCanvas();
     // };
@@ -98,13 +104,51 @@ export default {
           // this.ctx.fillText(column, this.startPaintingY + (this.tileSize * this.imgScale), (row * (this.tileSize * this.imgScale)));
           const tileMapVal = map[row][column];
           this.ctx.fillStyle = this.getGridTileColor(tileMapVal);
-          var SizeimgX = this.startPaintingX + (column * this.tileSize * this.tileScale);
-          var SizeimgY = this.startPaintingY + (row * this.tileSize * this.tileScale);
-          this.ctx.fillRect(SizeimgX, SizeimgY, (1 * this.tileSize * this.tileScale), (1 * this.tileSize * this.tileScale));
-          this.ctx.rect(SizeimgX, SizeimgY, (1 * this.tileSize * this.tileScale), (1 * this.tileSize * this.tileScale));
+          var SizeimgX = this.paintingX + (column * this.tileSize * this.scale);
+          var SizeimgY = this.paintingY + (row * this.tileSize * this.scale);
+          this.ctx.fillRect(SizeimgX, SizeimgY, (1 * this.tileSize * this.scale), (1 * this.tileSize * this.scale));
+          this.ctx.rect(SizeimgX, SizeimgY, (1 * this.tileSize * this.scale), (1 * this.tileSize * this.scale));
           this.ctx.stroke();
         }
       }
+    },
+    canvasEventsInit () {
+      var _this = this;
+      var canvas = _this.myCanvas;
+      canvas.onmousedown = function (event) {
+        var imgx = _this.paintingX;
+        var imgy = _this.paintingY;
+
+        var pos = { x: event.clientX, y: event.clientY };
+        canvas.onmousemove = function (evt) {
+          canvas.style.cursor = 'move';
+          var x = (evt.clientX - pos.x) * 2 + imgx;
+          var y = (evt.clientY - pos.y) * 2 + imgy;
+          _this.paintingX = x;
+          _this.paintingY = y;
+          _this.drawImage(_this.map);
+        };
+        canvas.onmouseup = function () {
+          canvas.onmousemove = null;
+          canvas.onmouseup = null;
+          canvas.style.cursor = 'default';
+        };
+      };
+      canvas.onmousewheel = canvas.onwheel = function (event) {
+        var wheelDelta = event.wheelDelta ? event.wheelDelta : (event.deltaY * (-40));
+        if (wheelDelta > 0) {
+          if (_this.scale <= 1.1) {
+            _this.scale += 0.1;
+          }
+        } else {
+          if (_this.scale >= 0.9) {
+            _this.scale -= 0.1;
+          }
+        }
+        _this.drawImage(_this.map);
+        event.preventDefault && event.preventDefault();
+        return false;
+      };
     },
     getGridTileColor (tileMapVal) {
       var gridTileColor = this.gridDefaultTileColor;
