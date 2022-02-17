@@ -21,7 +21,7 @@ export default {
     };
   },
   props: {
-    initMapmatrix: {
+    tileMapMapmatrix: {
       type: Array,
       default: () => ([])
     },
@@ -47,7 +47,7 @@ export default {
     },
     startPaintingX: {
       type: Number,
-      default: window.innerWidth / 12,
+      default: 0,
     },
     startPaintingY: {
       type: Number,
@@ -57,23 +57,23 @@ export default {
       type: String,
       default: '#c8efd4'
     },
-    gridTileColor: {
+    gridDefaultTileColor: {
       type: String,
       default: '#ffffff'
     },
   },
   watch: {
-    initMapmatrix: {
+    tileMapMapmatrix: {
       deep: true,
       handler (newVal, oldVal) {
-        this.initMapmatrix = newVal;
+        this.tileMapMapmatrix = newVal;
       }
     }
   },
   mounted () {
     this.myCanvas = this.$refs.titleMapCanvas;
     this.ctx = this.myCanvas.getContext('2d');
-    this.drawImage(this.initMapmatrix);
+    this.drawImage(this.tileMapMapmatrix);
     // window.onresize = function () {
     //   _this.resizeCanvas();
     // };
@@ -84,7 +84,7 @@ export default {
       let browserHeight = window.innerHeight;
       this.canvasWidth = browserWidth;
       this.canvasHeight = browserHeight;
-      this.drawImage(this.initMapmatrix);
+      this.drawImage(this.tileMapMapmatrix);
     },
     async drawImage (map) {
       var _this = this;
@@ -107,7 +107,7 @@ export default {
       }
     },
     getGridTileColor (tileMapVal) {
-      var gridTileColor = this.gridTileColor;
+      var gridTileColor = this.gridDefaultTileColor;
       this.tiledDigitalColormap.forEach((item) => {
         if (typeof (item[tileMapVal]) !== 'undefined' && item[tileMapVal]) {
           gridTileColor = item[tileMapVal];
@@ -119,5 +119,3 @@ export default {
 };
 </script>
 
-<style lang="scss" rel="stylesheet/scss"  scoped>
-</style>

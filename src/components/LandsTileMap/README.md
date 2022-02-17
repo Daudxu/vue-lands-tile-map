@@ -2,7 +2,7 @@
 
 NFT Lands tile map
 
-opensea ERC-721 ERC-1155
+tag: opensea ERC-721 ERC-1155
 
 ## Usage
 
@@ -30,10 +30,13 @@ export default {
 
 | 配置项 | 值类型 | 描述                     |
 | ------ | ------ | ------------------------ |
-| XXXX   | String | XXXX，XXXX               |
-| XXXX   | Number | 圆直径(px)，默认`XXXX`   |
-| XXXX   | String | 圆环粗细(px)，默认`XXXX` |
-| XXXX   | String | 圆环粗细(px)，默认`XXXX` |
-| XXXX   | String | 圆环粗细(px)，默认`XXXX` |
-| XXXX   | String | 圆环粗细(px)，默认`XXXX` |
-| XXXX   | String | 圆环粗细(px)，默认`XXXX` |
+| tileMapMapmatrix   | Array |   lands tile Map Mapmatrix   |
+| tiledDigitalColormap   | Array | Colors corresponding to digital tile maps   |
+| canvasWidth   | Number | canvas width，default `window.innerWidth` |
+| canvasHeight   | Number | canvas height，default `window.innerHeight` |
+| tileSize   | Number | tile map Size，default 32 |
+| tileScale   | Number | tile map Scale，default 1 |
+| startPaintingX   | Number | The horizontal coordinate of the starting point of the drawing，default 0 |
+| startPaintingY   | Number | The ordinate of the starting point of the drawing，default 0 |
+| gridLineColor   | String | grid Line Color，default '#c8efd4' |
+| gridDefaultTileColor   | String | grid Default Tile Color，default '#ffffff' |

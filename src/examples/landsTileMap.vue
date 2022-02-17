@@ -2,7 +2,7 @@
   <div class="wrap">
     <h4>lands Tile Map</h4>
     <div>
-      <LandsTileMap :initMapmatrix="initMapmatrix"
+      <LandsTileMap :tileMapMapmatrix="tileMapMapmatrix"
                     :tiledDigitalColormap="tiledDigitalColormap">
       </LandsTileMap>
     </div>
@@ -11,14 +11,14 @@
 <script>
 
 import { LandsTileMap } from '@/components';
-// import { Loading } from '../../dist/nft-lands-tile-map-vue-component.min.js';
+// import { LandsTileMap } from '../../dist/nft-lands-tile-map-vue-component.min.js';
 
 export default {
   name: 'landsTileMap',
   data () {
     return {
       myCanvas: null,
-      initMapmatrix: [
+      tileMapMapmatrix: [
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 1, 1, 0, 1, 1, 0, 0],
