@@ -5,7 +5,9 @@
             class="titleMapCanvas"
             ref="titleMapCanvas"
             :width="canvasW"
-            :height="canvasH">
+            :height="canvasH"
+            :style="{'background':canvasBgColor}"
+            >
     </canvas>
     <!-- canvas end -->
   </div>
@@ -54,6 +56,10 @@ export default {
     gridDefaultTileColor: {
       type: String,
       default: '#ffffff'
+    },
+    canvasBgColor: {
+      type: String,
+      default: '#acb8e9'
     },
   },
   data () {
