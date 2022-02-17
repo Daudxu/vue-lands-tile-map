@@ -17,7 +17,6 @@ export default {
   name: 'landsTileMap',
   data () {
     return {
-      myCanvas: null,
       tileMapMapmatrix: [
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -35,9 +34,6 @@ export default {
         { 2: '#0070c0' }
       ]
     };
-  },
-  mounted () {
-
   },
   components: {
     LandsTileMap

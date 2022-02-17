@@ -8,18 +8,44 @@ tag: opensea ERC-721 ERC-1155
 
 ```
 <template>
-  <div>
-    <loading></loading>
+  <div class="wrap">
+    <h4>lands Tile Map</h4>
+    <div>
+      <LandsTileMap :tileMapMapmatrix="tileMapMapmatrix"
+                    :tiledDigitalColormap="tiledDigitalColormap">
+      </LandsTileMap>
+    </div>
   </div>
 </template>
 <script>
-import { LandsTileMap } from 'nft-lands-tile-map-vue-component';
+
+import { LandsTileMap } from '@/components';
+
 export default {
-  ...
+  name: 'landsTileMap',
+  data () {
+    return {
+      tileMapMapmatrix: [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 1, 0, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 1, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ],
+      tiledDigitalColormap: [
+        { 0: '#138535' },
+        { 1: '#101566' },
+        { 2: '#0070c0' }
+      ]
+    };
+  },
   components: {
-    Loading
+    LandsTileMap
   }
-  ...
 };
 </script>
 ```
