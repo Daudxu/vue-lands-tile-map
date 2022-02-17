@@ -160,3 +160,8 @@ export default {
 };
 </script>
 
+<style lang="scss" rel="stylesheet/scss"  scoped>
+.hg-landsTileMap-wrapper{
+  border: none;
+}
+</style>
