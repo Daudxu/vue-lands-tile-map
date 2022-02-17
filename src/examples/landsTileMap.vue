@@ -2,7 +2,8 @@
   <div class="wrap">
     <h4>lands Tile Map</h4>
     <div>
-      <LandsTileMap>
+      <LandsTileMap :initMapmatrix="initMapmatrix"
+                    :tiledDigitalColormap="tiledDigitalColormap">
       </LandsTileMap>
     </div>
   </div>
@@ -16,8 +17,27 @@ export default {
   name: 'landsTileMap',
   data () {
     return {
-      data: {}
+      myCanvas: null,
+      initMapmatrix: [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 1, 0, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 1, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ],
+      tiledDigitalColormap: [
+        { 0: '#138535' },
+        { 1: '#101566' },
+        { 2: '#0070c0' }
+      ]
     };
+  },
+  mounted () {
+
   },
   components: {
     LandsTileMap

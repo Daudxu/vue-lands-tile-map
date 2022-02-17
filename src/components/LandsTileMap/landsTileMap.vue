@@ -23,25 +23,11 @@ export default {
   props: {
     initMapmatrix: {
       type: Array,
-      default: () => [
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 1, 1, 0, 1, 1, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 1, 1, 1, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-      ]
+      default: () => ([])
     },
     tiledDigitalColormap: {
       type: Array,
-      default: () => [
-        { 0: '#138535' },
-        { 1: '#101566' },
-        { 2: '#0070c0' }
-      ]
+      default: () => ([])
     },
     canvasWidth: {
       type: Number,
@@ -76,11 +62,18 @@ export default {
       default: '#ffffff'
     },
   },
+  watch: {
+    initMapmatrix: {
+      deep: true,
+      handler (newVal, oldVal) {
+        this.initMapmatrix = newVal;
+      }
+    }
+  },
   mounted () {
     this.myCanvas = this.$refs.titleMapCanvas;
     this.ctx = this.myCanvas.getContext('2d');
-    var _this = this;
-    _this.drawImage(this.initMapmatrix);
+    this.drawImage(this.initMapmatrix);
     // window.onresize = function () {
     //   _this.resizeCanvas();
     // };
