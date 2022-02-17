@@ -11,8 +11,8 @@
 </template>
 <script>
 
-// import { LandsTileMap } from '@/components';
-import { LandsTileMap } from '../../dist/nft-lands-tile-map-vue-component.min.js';
+import { LandsTileMap } from '@/components';
+// import { LandsTileMap } from '../../dist/nft-lands-tile-map-vue-component.min.js';
 
 export default {
   name: 'landsTileMap',
