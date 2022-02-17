@@ -1,12 +1,24 @@
 <template>
   <div class="hg-landsTileMap-wrapper">
-      LandsTileMap
+    <div> {{toc}}</div>
+    <canvas id="titleMapCanvas"
+            class="titleMapCanvas"
+            ref="titleMapCanvas"
+            :width="canvasWidth"
+            :height="canvasHeight"></canvas>
   </div>
 </template>
 
 <script>
 export default {
   name: 'landsTileMap',
+  data () {
+    return {
+      initMapmatrix: '',
+      canvasWidth: window.innerWidth,
+      canvasHeight: window.innerHeight,
+    };
+  },
   props: {
     color: {
       type: String,

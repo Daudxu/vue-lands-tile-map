@@ -1,18 +1,17 @@
 <template>
   <div class="hg-loading-wrapper">
-    <div class="hg-cssload-container" 
-      :style="{
+    <div class="hg-cssload-container"
+         :style="{
         height: diam + size * 2 + 'px'
       }">
       <div class="hg-cssload-speeding-wheel"
-        :style="{
+           :style="{
           width: `${diam}px`,
           height: `${diam}px`,
           border: `${size}px solid ${color}`,
           'border-left-color': 'transparent',
           'border-right-color': 'transparent'
-        }"
-      ></div>
+        }"></div>
     </div>
   </div>
 </template>
