@@ -1,5 +1,5 @@
 <p align="center">
-   NFT Lands Tile Map Vue Component
+# NFT Lands Tile Map Vue Component
 </p>
 
 vue-components
