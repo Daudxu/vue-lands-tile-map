@@ -1,11 +1,21 @@
-# name: Build app and deploy to NPM & Sync Code To Gitee
-# on:
-#   #监听push操作
-#   push:
-#     branches:
-#       # master分支，你也可以改成其他分支
-#       - master
-# jobs:
+name: Build app and deploy to NPM & Sync Code To Gitee
+on:
+  #监听push操作
+  push:
+    branches:
+      # master分支，你也可以改成其他分支
+      - master
+jobs:
+  job_1:
+    name: job 1
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🖥️ The workflow is now ready to test job 1 on the runner."
+  job_2:
+    name: job 2
+    runs-on: ubuntu-latest
+    steps:
+     - run: echo "🖥️ The workflow is now ready to test job 1  on the runner."
 #   Sync-Code-To-Gitee-job:
 #     # runs-on 指定job任务运行所需要的虚拟机环境
 #     runs-on: ubuntu-latest
