@@ -1,12 +1,12 @@
-<p align="center">
+
 # NFT Lands Tile Map Vue Component
-</p>
 
 vue-components
 
 [![npm][npm]][npm-url]
 [![node][node]][node-url]
-
+[![Github All Releases](https://img.shields.io/github/downloads/ethereum/mist/total.svg)](http://www.somsubhra.com/github-release-stats/?username=ethereum&repository=mist)
+[![Build Status develop branch](https://travis-ci.org/ethereum/mist.svg?branch=develop)](https://travis-ci.org/ethereum/mist)
 ## Installation
 
 ```
