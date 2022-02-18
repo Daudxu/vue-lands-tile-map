@@ -1,11 +1,15 @@
 <template>
   <div class="wrap">
     <h4>lands Tile Map </h4>
-    <span v-show="y"> Current coordinates {{x}},{{y}}</span>
+    <div style="text-align: center;margin-bottom: 10px;">
+      <h5> <span> Current coordinates {{x}},{{y}}</span> <span> <button @click="handleClickFilter"> 模拟筛选</button></span> </h5>
+    </div>
     <div>
-      <LandsTileMap :tileMapMapmatrix="tileMapMapmatrix"
+      <LandsTileMap ref="landsTileMapRef"
+                    :tileMapMapmatrix="tileMapMapmatrix"
                     :tiledDigitalColormap="tiledDigitalColormap"
-                    :tileSize="tileSize"  @handleClickTile="handleClickTile" >
+                    :tileSize="tileSize"
+                    @handleClickTile="handleClickTile">
       </LandsTileMap>
     </div>
   </div>
@@ -39,30 +43,65 @@ export default {
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       ],
+      tileMapMapmatrixToc: [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ],
       tiledDigitalColormap: [
         { 0: '#138535' },
         { 1: '#101566' },
         { 2: '#0070c0' }
       ],
       tileSize: 30,
-      x:'',
-      y:'',
+      x: 0,
+      y: 0,
+      flag: true
     };
   },
   components: {
     LandsTileMap
   },
-   methods: {
+  methods: {
     handleClickTile (e) {
-       if(typeof(this.tileMapMapmatrix[e.clickY][e.clickX]) !== 'undefined'){
-          this.x = e.clickX
-          this.y = e.clickY
-       }else{
-          this.x = ''
-          this.y = ''
-       }
+      if (typeof (this.tileMapMapmatrix[e.clickY][e.clickX]) !== 'undefined') {
+        this.x = e.clickX;
+        this.y = e.clickY;
+      } else {
+        this.x = '';
+        this.y = '';
+      }
+    },
+    handleClickFilter () {
+      // console.log('ABC');
+      // this.tileMapMapmatrix = this.tileMapMapmatrixToc;
+      var tileMap = this.tileMapMapmatrix;
+      var flag = this.flag;
+      if (flag) {
+        tileMap = this.tileMapMapmatrixToc;
+        flag = false;
+      } else {
+        flag = true;
+      }
+      this.flag = flag;
+      this.$refs.landsTileMapRef.handleClickAssignRender(tileMap);
     }
- }
+  }
 };
 </script>
 
@@ -72,9 +111,9 @@ export default {
     text-align: center;
     padding: 20px 0;
   }
-  & > div {
+  /* & > div {
     position: relative;
     height: 600px;
-  }
+  } */
 }
 </style>
