@@ -1,15 +1,17 @@
-# nft-lands-tile-map-vue-component
+<p align="center">
+   NFT Lands Tile Map Vue Component
+</p>
 
 vue-components
+
+[![npm][npm]][npm-url]
+[![node][node]][node-url]
 
 ## Installation
 
 ```
 npm install nft-lands-tile-map-vue-component
 ```
-
-[![npm][npm]][npm-url]
-[![node][node]][node-url]
 
 ## Import
 
