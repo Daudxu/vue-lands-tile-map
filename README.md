@@ -1,8 +1,6 @@
 
 # NFT Lands Tile Map Vue Component
 
-vue-components
-
 [![npm][npm]][npm-url]
 [![node][node]][node-url]
 
@@ -162,7 +160,6 @@ export default {
 
   - [X] Built for Ethereum using [Web3](https://github.com/ethereum/web3.js/).
   - [X] Implements [Graph Protocol](https://github.com/graphprotocol) to read blockchain.
-  - 
 ## Changelog
 
 ### 2022.02.17
