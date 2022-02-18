@@ -5,10 +5,7 @@ vue-components
 
 [![npm][npm]][npm-url]
 [![node][node]][node-url]
-## Features
 
-  - [X] Built for Ethereum using [Web3](https://github.com/ethereum/web3.js/).
-  - [X] Implements [Graph Protocol](https://github.com/graphprotocol) to read blockchain.
 ## Installation
 
 ```
@@ -161,6 +158,11 @@ export default {
 | handleClickAssignRender | function | render canvas view                                                            |
 | blockCoverage           | function | Merge large block matrices                                                    |
 
+## Features
+
+  - [X] Built for Ethereum using [Web3](https://github.com/ethereum/web3.js/).
+  - [X] Implements [Graph Protocol](https://github.com/graphprotocol) to read blockchain.
+  - 
 ## Changelog
 
 ### 2022.02.17
