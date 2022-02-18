@@ -20,6 +20,10 @@ export default {
       type: Array,
       default: () => ([])
     },
+    tileMapBlockMapmatrix: {
+      type: Array,
+      default: () => ([])
+    },
     tiledDigitalColormap: {
       type: Array,
       default: () => ([])
@@ -97,7 +101,12 @@ export default {
   mounted () {
     this.myCanvas = this.$refs.titleMapCanvas;
     this.ctx = this.myCanvas.getContext('2d');
-    this.drawImage(this.tileMapMapmatrix);
+    console.log(this.tileMapBlockMapmatrix.length);
+    var tileMapMapmatrix = this.clone(this.tileMapMapmatrix);
+    if (this.tileMapBlockMapmatrix.length > 0) {
+      tileMapMapmatrix = this.blockCoverage(tileMapMapmatrix, this.tileMapBlockMapmatrix);
+    }
+    this.drawImage(tileMapMapmatrix);
     this.map = this.tileMapMapmatrix;
     this.canvasEventsInit();
     var _this = this;
@@ -263,6 +272,36 @@ export default {
       this.nmp = tileMap;
       this.$set(this, 'map', tileMap);
       this.drawImage(this.nmp);
+    },
+    blockCoverage (primitiveMatrix, currentMatrix) {
+      var data = this.clone(primitiveMatrix);
+      for (let row = 0; row < data.length; row++) {
+        for (let column = 0; column < data[row].length; column++) {
+          if (currentMatrix[row][column] !== 0) {
+            data[row][column] = currentMatrix[row][column];
+          }
+        }
+      }
+      return data;
+    },
+    clone (Obj) {
+      var buf;
+      if (Obj instanceof Array) {
+        buf = [];
+        var i = Obj.length;
+        while (i--) {
+          buf[i] = this.clone(Obj[i]);
+        }
+        return buf;
+      } else if (Obj instanceof Object) {
+        buf = {};
+        for (var k in Obj) {
+          buf[k] = this.clone(Obj[k]);
+        }
+        return buf;
+      } else {
+        return Obj;
+      }
     },
     getGridTileColor (tileMapVal) {
       var gridTileColor = this.gridDefaultTileColor;
