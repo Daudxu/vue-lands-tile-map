@@ -1,6 +1,3 @@
-[![npm][npm]][npm-url]
-[![node][node]][node-url]
-
 # nft-lands-tile-map-vue-component
 
 vue-components
@@ -10,6 +7,9 @@ vue-components
 ```
 npm install nft-lands-tile-map-vue-component
 ```
+
+[![npm][npm]][npm-url]
+[![node][node]][node-url]
 
 ## Import
 
