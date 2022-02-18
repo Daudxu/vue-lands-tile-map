@@ -23,7 +23,7 @@ module.exports = {
   build: {
     env: require('./prod.env'),
     assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
     assetsSubDirectory: '/',
     productionSourceMap: true,
     productionGzip: false,

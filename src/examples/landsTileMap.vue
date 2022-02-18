@@ -1,18 +1,19 @@
 <template>
   <div class="wrap">
-    <h4>lands Tile Map</h4>
+    <h4>lands Tile Map </h4>
+    <span v-show="y"> Current coordinates {{x}},{{y}}</span>
     <div>
       <LandsTileMap :tileMapMapmatrix="tileMapMapmatrix"
                     :tiledDigitalColormap="tiledDigitalColormap"
-                    :tileSize="tileSize">
+                    :tileSize="tileSize"  @handleClickTile="handleClickTile" >
       </LandsTileMap>
     </div>
   </div>
 </template>
 <script>
 
-// import { LandsTileMap } from '@/components';
-import { LandsTileMap } from '../../dist/nft-lands-tile-map-vue-component.min.js';
+import { LandsTileMap } from '@/components';
+// import { LandsTileMap } from '../../dist/nft-lands-tile-map-vue-component.min.js';
 
 export default {
   name: 'landsTileMap',
@@ -43,12 +44,25 @@ export default {
         { 1: '#101566' },
         { 2: '#0070c0' }
       ],
-      tileSize: 30
+      tileSize: 30,
+      x:'',
+      y:'',
     };
   },
   components: {
     LandsTileMap
-  }
+  },
+   methods: {
+    handleClickTile (e) {
+       if(typeof(this.tileMapMapmatrix[e.clickY][e.clickX]) !== 'undefined'){
+          this.x = e.clickX
+          this.y = e.clickY
+       }else{
+          this.x = ''
+          this.y = ''
+       }
+    }
+ }
 };
 </script>
 
