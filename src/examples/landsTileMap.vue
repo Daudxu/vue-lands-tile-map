@@ -109,9 +109,5 @@ export default {
     text-align: center;
     padding: 20px 0;
   }
-  /* & > div {
-    position: relative;
-    height: 600px;
-  } */
 }
 </style>

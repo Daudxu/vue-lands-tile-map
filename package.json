@@ -6,9 +6,24 @@
   "keywords": [
     "hanger",
     "vue",
-    "components"
+    "nft",
+    "lands",
+    "Metaverse",
+    "Opensea",
+    "components",
+    "virtual land",
+    "eth"
   ],
   "private": false,
+  "homepage": "https://github.com/Daudxu/nft-lands-tile-map-vue-component",
+  "bugs": {
+  "url": "https://github.com/Daudxu/nft-lands-tile-map-vue-component/issues"
+ },
+  "license": "MIT",
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/Daudxu/nft-lands-tile-map-vue-component.git"
+ },
   "main": "dist/nft-lands-tile-map-vue-component.min.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
