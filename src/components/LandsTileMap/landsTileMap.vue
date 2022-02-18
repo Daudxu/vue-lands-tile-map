@@ -60,6 +60,14 @@ export default {
       type: String,
       default: '#acb8e9'
     },
+    xyAxisPosition: {
+      type: String,
+      default: 'middle-middle'
+    },
+    debug: {
+      type: Boolean,
+      default: false
+    },
   },
   data () {
     return {
@@ -72,7 +80,10 @@ export default {
       scale: this.tileScale,
       canvasW: this.canvasWidth,
       canvasH: this.canvasHeight,
-      model: {}
+      model: {},
+      xyAxisPositionList: ['left-top', 'left-middle', 'left-bottom', 'middle-top', 'middle-middle', 'middle-bottom', 'right-top', 'right-middle', 'right-bottom'],
+      matrixWidth: 0,
+      matrixHeight: 0,
     };
   },
   watch: {
@@ -110,6 +121,8 @@ export default {
     },
     async drawImage (map) {
       var _this = this;
+      _this.matrixWidth = map.length;
+      _this.matrixHeight = map[0].length;
       _this.ctx.clearRect(0, 0, _this.myCanvas.width, _this.myCanvas.height);
       this.ctx.lineWidth = 1;
       this.ctx.strokeStyle = this.gridLineColor;
@@ -168,10 +181,8 @@ export default {
             _this.scale -= 0.1;
           }
         }
-
         _this.drawImage(_this.map);
-
-        // event.preventDefault && event.preventDefault();
+        event.preventDefault && event.preventDefault();
         return false;
       };
     },
@@ -181,11 +192,87 @@ export default {
       this.$set(this.model, 'SizeimgX', clickX);
       this.$set(this.model, 'SizeimgY', clickY);
       this.drawImage(this.map);
+      let xyAxis = this.coordinateAxisConversion(clickX, clickY);
+      console.log(xyAxis);
       this.$emit('handleClickTile', {
         clickX: clickX,
         clickY: clickY,
+        x: xyAxis.clickX,
+        y: xyAxis.clickY,
         event: event,
       });
+    },
+    coordinateAxisConversion (x, y) {
+      let xyAxis = null;
+      let xyAxisPosition = this.xyAxisPosition;
+      const matrixWidth = this.matrixWidth;
+      const matrixHeight = this.matrixHeight;
+      if (xyAxisPosition === 'left-top') {
+        xyAxis = {
+          clickX: x,
+          clickY: y,
+        };
+        console.log('left-top');
+      } else if (xyAxisPosition === 'left-middle') {
+        xyAxis = {
+          clickX: x,
+          clickY: y,
+        };
+        console.log('left-middle');
+      } else if (xyAxisPosition === 'left-top') {
+        xyAxis = {
+          clickX: x,
+          clickY: y,
+        };
+        console.log('left-top');
+      } else if (xyAxisPosition === 'left-bottom') {
+        xyAxis = {
+          clickX: x,
+          clickY: y,
+        };
+        console.log('left-bottom');
+      } else if (xyAxisPosition === 'left-bottom') {
+        xyAxis = {
+          clickX: x,
+          clickY: y,
+        };
+        console.log('left-bottom');
+      } else if (xyAxisPosition === 'right-top') {
+        xyAxis = {
+          clickX: x,
+          clickY: y,
+        };
+        console.log('right-top');
+      } else if (xyAxisPosition === 'right-middle') {
+        xyAxis = {
+          clickX: x,
+          clickY: y,
+        };
+        console.log('right-middle');
+      } else if (xyAxisPosition === 'right-bottom') {
+        xyAxis = {
+          clickX: x,
+          clickY: y,
+        };
+        console.log('right-bottom');
+      } else {
+        var WidthLine = Math.ceil(matrixWidth / 2);
+        var heightLine = Math.ceil(matrixHeight / 2);
+        var xy = this.getXYAxis(WidthLine, heightLine, x, y);
+        xyAxis = {
+          clickX: xy.clickX,
+          clickY: xy.clickY,
+        };
+      }
+      return xyAxis;
+    },
+    getXYAxis (sourceX, sourceY, x, y) {
+      let newX = x - sourceX;
+      let newY = y - sourceY;
+      return {
+        clickX: newX,
+        clickY: newY,
+      };
     },
     handleClickAssignRender (tileMap) {
       this.nmp = tileMap;
