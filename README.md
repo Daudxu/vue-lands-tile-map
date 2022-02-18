@@ -5,8 +5,10 @@ vue-components
 
 [![npm][npm]][npm-url]
 [![node][node]][node-url]
-[![Github All Releases](https://img.shields.io/github/downloads/ethereum/mist/total.svg)](http://www.somsubhra.com/github-release-stats/?username=ethereum&repository=mist)
-[![Build Status develop branch](https://travis-ci.org/ethereum/mist.svg?branch=develop)](https://travis-ci.org/ethereum/mist)
+## Features
+
+  - [X] Built for Ethereum using [Web3](https://github.com/ethereum/web3.js/).
+  - [X] Implements [Graph Protocol](https://github.com/graphprotocol) to read blockchain.
 ## Installation
 
 ```
