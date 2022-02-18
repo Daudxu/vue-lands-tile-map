@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-const Index = () => import('@/examples/index.vue');
+// const Index = () => import('@/examples/index.vue');
 const LandsTileMap = () => import('@/examples/landsTileMap.vue');
 
 Vue.use(Router);
@@ -10,12 +10,12 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: Index
-    },
-    {
-      path: '/landsTileMap',
-      name: 'landsTileMap',
       component: LandsTileMap
     },
+    // {
+    //   path: '/landsTileMap',
+    //   name: 'landsTileMap',
+    //   component: LandsTileMap
+    // },
   ]
 });
