@@ -62,7 +62,7 @@ export default {
     },
     xyAxisPosition: {
       type: String,
-      default: 'middle-middle'
+      default: 'left-top'
     },
     debug: {
       type: Boolean,
@@ -207,64 +207,49 @@ export default {
       let xyAxisPosition = this.xyAxisPosition;
       const matrixWidth = this.matrixWidth;
       const matrixHeight = this.matrixHeight;
+      var xy = null;
       if (xyAxisPosition === 'left-top') {
-        xyAxis = {
+        xy = {
           clickX: x,
           clickY: y,
         };
-        console.log('left-top');
       } else if (xyAxisPosition === 'left-middle') {
-        xyAxis = {
-          clickX: x,
-          clickY: y,
-        };
-        console.log('left-middle');
-      } else if (xyAxisPosition === 'left-top') {
-        xyAxis = {
-          clickX: x,
-          clickY: y,
-        };
-        console.log('left-top');
+        let WidthLine = 0;
+        let heightLine = Math.ceil(matrixHeight / 2);
+        xy = this.getXYAxis(WidthLine, heightLine, x, y);
       } else if (xyAxisPosition === 'left-bottom') {
-        xyAxis = {
-          clickX: x,
-          clickY: y,
-        };
-        console.log('left-bottom');
-      } else if (xyAxisPosition === 'left-bottom') {
-        xyAxis = {
-          clickX: x,
-          clickY: y,
-        };
-        console.log('left-bottom');
+        let WidthLine = 0;
+        let heightLine = matrixHeight;
+        xy = this.getXYAxis(WidthLine, heightLine, x, y);
+      } else if (xyAxisPosition === 'middle-top') {
+        let WidthLine = Math.ceil(matrixWidth / 2);
+        let heightLine = 0;
+        xy = this.getXYAxis(WidthLine, heightLine, x, y);
+      } else if (xyAxisPosition === 'middle-bottom') {
+        let WidthLine = Math.ceil(matrixWidth / 2);
+        let heightLine = matrixHeight;
+        xy = this.getXYAxis(WidthLine, heightLine, x, y);
       } else if (xyAxisPosition === 'right-top') {
-        xyAxis = {
-          clickX: x,
-          clickY: y,
-        };
-        console.log('right-top');
+        let WidthLine = matrixWidth;
+        let heightLine = 0;
+        xy = this.getXYAxis(WidthLine, heightLine, x, y);
       } else if (xyAxisPosition === 'right-middle') {
-        xyAxis = {
-          clickX: x,
-          clickY: y,
-        };
-        console.log('right-middle');
+        let WidthLine = matrixWidth;
+        let heightLine = Math.ceil(matrixHeight / 2);
+        xy = this.getXYAxis(WidthLine, heightLine, x, y);
       } else if (xyAxisPosition === 'right-bottom') {
-        xyAxis = {
-          clickX: x,
-          clickY: y,
-        };
-        console.log('right-bottom');
+        let WidthLine = matrixWidth;
+        let heightLine = matrixHeight;
+        xy = this.getXYAxis(WidthLine, heightLine, x, y);
       } else {
-        var WidthLine = Math.ceil(matrixWidth / 2);
-        var heightLine = Math.ceil(matrixHeight / 2);
-        var xy = this.getXYAxis(WidthLine, heightLine, x, y);
-        xyAxis = {
-          clickX: xy.clickX,
-          clickY: xy.clickY,
-        };
+        let WidthLine = Math.ceil(matrixWidth / 2);
+        let heightLine = Math.ceil(matrixHeight / 2);
+        xy = this.getXYAxis(WidthLine, heightLine, x, y);
       }
-      return xyAxis;
+      return {
+        clickX: xy.clickX,
+        clickY: xy.clickY,
+      };
     },
     getXYAxis (sourceX, sourceY, x, y) {
       let newX = x - sourceX;
