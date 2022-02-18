@@ -11,15 +11,15 @@ vue-components
 ```
 npm install nft-lands-tile-map-vue-component
 ```
-
-## Import
+## Usage
+### Import
 
 ```
 import 'nft-lands-tile-map-vue-component/dist/nft-lands-tile-map-vue-component.min.css';
 import { LandsTileMap } from 'nft-lands-tile-map-vue-component';
 ```
 
-## Usage
+### demo
 
 ```
 <template>
