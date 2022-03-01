@@ -30,6 +30,7 @@
     "start": "npm run dev",
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js",
+    "lib": "node build/lib.js",
     "tonpm": "npm run build && npm version patch && npm publish"
   },
   "dependencies": {

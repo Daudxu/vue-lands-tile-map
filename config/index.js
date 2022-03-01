@@ -29,5 +29,15 @@ module.exports = {
     productionGzip: false,
     productionGzipExtensions: ['js', 'css'],
     bundleAnalyzerReport: process.env.npm_config_report
+  },
+  lib: {
+    env: require('./prod.env'),
+    assetsRoot: path.resolve(__dirname, '../lib'),
+    assetsPublicPath: './',
+    assetsSubDirectory: '/',
+    productionSourceMap: true,
+    productionGzip: false,
+    productionGzipExtensions: ['js', 'css'],
+    bundleAnalyzerReport: process.env.npm_config_report
   }
 }
