@@ -43,7 +43,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // extract css into its own file
     new ExtractTextPlugin({
       // filename: utils.assetsPath('css/[name].[contenthash].css')
-       filename: 'nft-lands-tile-map-vue-component.min.css'
+      filename: 'nft-lands-tile-map-vue-component.min.css'
     }),
     new OptimizeCSSPlugin()
   ]

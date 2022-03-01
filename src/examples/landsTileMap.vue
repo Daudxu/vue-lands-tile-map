@@ -11,7 +11,8 @@
                     :tileSize="tileSize"
                     :startPaintingX="startPaintingX"
                     :startPaintingY="startPaintingY"
-                    @handleClickTile="handleClickTile">
+                    @handleClickTile="handleClickTile"
+                    @test="ceshi">
       </LandsTileMap>
     </div>
   </div>
@@ -82,6 +83,9 @@ export default {
     LandsTileMap
   },
   methods: {
+    ceshi () {
+      console.log('ceshi');
+    },
     handleClickTile (e) {
       if (typeof (this.tileMapMapmatrix[e.clickY][e.clickX]) !== 'undefined') {
         this.x = e.x;

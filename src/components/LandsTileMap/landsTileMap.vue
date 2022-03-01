@@ -117,6 +117,9 @@ export default {
     };
   },
   methods: {
+    test () {
+      this.$emit('test');
+    },
     resizeCanvas (w, h) {
       var _this = this;
       this.canvasW = w;
