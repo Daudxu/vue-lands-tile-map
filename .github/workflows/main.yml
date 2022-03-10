@@ -1,4 +1,4 @@
-name: Build app and deploy to NPM & Sync Code To Gitee
+name: Build app and deploy to aliyun
 on:
   #监听push操作
   push:
@@ -6,46 +6,51 @@ on:
       # master分支，你也可以改成其他分支
       - master
 jobs:
-  job_1:
-    name: job 1
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "🖥️ The workflow is now ready to test job 1 on the runner."
-  job_2:
-    name: job 2
-    runs-on: ubuntu-latest
-    steps:
-     - run: echo "🖥️ The workflow is now ready to test job 1  on the runner."
-  job_3:
-    name: job 3
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."   
-  Sync-Code-To-Gitee-job:
+  build-deploy-job:
     # runs-on 指定job任务运行所需要的虚拟机环境
     runs-on: ubuntu-latest
     steps:
-      # 同步代码到 gitee
-    - name: Sync Github Repos To Gitee  # 名字随便起
-      uses: Yikun/hub-mirror-action@v1.1  # 使用Yikun/hub-mirror-action
-      with:
-        src: github/Daudxu
-        dst: gitee/coding-365
-        dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}  # SSH密钥对中的私钥
-        dst_token:  ${{ secrets.GITEE_TOKEN }}  # Gitee账户的私人令牌
-        account_type: user  # 账户类型
-        clone_style: "https"  # 使用https方式进行clone，也可以使用ssh
-        debug: true  # 启用后会显示所有执行命令
-        force_update: true  # 启用后，强制同步，即强制覆盖目的端仓库
-        static_list: 'nft-lands-tile-map-vue-component'  # 静态同步列表，在此填写需要同步的仓库名称，可填写多个
-        timeout: '600s'  # git超时设置，超时后会自动重试git操作
+      # 获取源码
+      - name: Checkout
+        # 使用action库  actions/checkout获取源码
+        uses: actions/checkout@v2
+      # 安装Node13
+      - name: use Node.js 16.13.1
+        # 使用action库  actions/setup-node安装node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.13.1
+      # 安装依赖
+      - name: npm  install
+        run: npm install
+      # 打包
+      - name: npm run build
+        run: npm run build
+      # 执行JamesIves/github-pages-deploy-action将项目发布到Github Pages
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          # 该workflow需要操作repo，因此需要一个密钥，下面会讲到如何获取这个密钥
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          # 发布到的分支
+          BRANCH: gh-pages
+          # 要发布的文件夹
+          FOLDER: dist
+#   Sync-Code-To-Gitee-job:
+#     # runs-on 指定job任务运行所需要的虚拟机环境
+#     runs-on: ubuntu-latest
+#     steps:
+#       # 同步代码到 gitee
+#     - name: Sync Github Repos To Gitee  # 名字随便起
+#       uses: Yikun/hub-mirror-action@v1.1  # 使用Yikun/hub-mirror-action
+#       with:
+#         src: github/Daudxu
+#         dst: gitee/coding-365
+#         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}  # SSH密钥对中的私钥
+#         dst_token:  ${{ secrets.GITEE_TOKEN }}  # Gitee账户的私人令牌
+#         account_type: user  # 账户类型
+#         clone_style: "https"  # 使用https方式进行clone，也可以使用ssh
+#         debug: true  # 启用后会显示所有执行命令
+#         force_update: true  # 启用后，强制同步，即强制覆盖目的端仓库
+#         static_list: 'nft-lands-tile-map-vue-component'  # 静态同步列表，在此填写需要同步的仓库名称，可填写多个
+#         timeout: '600s'  # git超时设置，超时后会自动重试git操作
