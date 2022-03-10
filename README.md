@@ -9,6 +9,12 @@
 
 ### NFT Metaverse Lands Vue Tile Map Component
 
+## demo
+https://daudxu.github.io/vue-lands-tile-map/
+
+## Preview
+
+![preview](./images/preview.png)
 
 ## Installation
 
