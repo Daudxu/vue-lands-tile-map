@@ -27,7 +27,7 @@ npm install vue-lands-tile-map
 
 ```
 
-import VueLandsTileMap from '../packages/index'
+import VueLandsTileMap from 'vue-lands-tile-map'
 
 Vue.use(VueLandsTileMap);
 
