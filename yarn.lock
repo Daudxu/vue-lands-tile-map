@@ -932,11 +932,6 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
-"@google/model-viewer@^1.10.1":
-  version "1.10.1"
-  resolved "https://registry.npmjs.org/@google/model-viewer/-/model-viewer-1.10.1.tgz#521d6112685f629514a7fbd1be1dcc476f58c9b1"
-  integrity sha512-mQ7FhALWLj1rc4P7NXUNVG4glfgIeKK18X5UlQ0C+InkTsaLvfdTkOz5ixTwDWaw3ba8j6DMyGcN0mzMqc/OyA==
-
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.npmjs.org/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -8214,15 +8209,6 @@ vue-loader@^15.9.2:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
-
-vue-model-viewer@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/vue-model-viewer/-/vue-model-viewer-1.0.8.tgz#80287a0a48a00fbf5e92599880d2d7bcb31319a3"
-  integrity sha512-iSIYri2co5O0VyqibJbmk39UretG8O/kjVIsJgQeT0sGHMB4dq0TggnH5au3ogeoiXUcR9/3zqjRtCsPP8Udxw==
-  dependencies:
-    "@google/model-viewer" "^1.10.1"
-    core-js "^3.6.5"
-    vue "^2.6.11"
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.3"
