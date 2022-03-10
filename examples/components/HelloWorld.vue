@@ -1,36 +1,3 @@
-<h1 align="center">
-   VUE Lands Tile Map Component
-</h1>
-
-[![npm][npm]][npm-url]
-[![node][node]][node-url]
-
-
-
-### NFT Metaverse Lands Vue Tile Map Component
-
-
-## Installation
-
-```
-npm install vue-lands-tile-map
-```
-## Usage
-
-### Import
-
-```
-
-import VueLandsTileMap from '../packages/index'
-
-Vue.use(VueLandsTileMap);
-
-
-```
-
-### demo
-
-```
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
@@ -170,40 +137,3 @@ a {
   color: #42b983;
 }
 </style>
-
-```
-
-具体使用可参考[该文件](../../examples/landsTileMap.vue)。
-
-## Options
-
-| 配置项                  | 值类型   | 描述                                                                          |
-| ----------------------- | -------- | ----------------------------------------------------------------------------- |
-| tileMapMapmatrix        | Array    | lands tile Map Mapmatrix                                                      |
-| tiledDigitalColormap    | Array    | Colors corresponding to digital tile maps                                     |
-| canvasWidth             | Number   | canvas width，default `window.innerWidth`                                     |
-| canvasHeight            | Number   | canvas height，default `window.innerHeight`                                   |
-| tileSize                | Number   | tile map Size，default 32                                                     |
-| tileScale               | Number   | tile map Scale，default 1                                                     |
-| startPaintingX          | Number   | The horizontal coordinate of the starting point of the drawing，default 0     |
-| startPaintingY          | Number   | The ordinate of the starting point of the drawing，default 0                  |
-| gridLineColor           | String   | grid Line Color，default '#c8efd4'                                            |
-| gridDefaultTileColor    | String   | grid Default Tile Color，default '#ffffff'                                    |
-| handleClickTile         | function | Click to return to coordinates Returns the coordinates and click event object |
-| handleClickAssignRender | function | render canvas view                                                            |
-| blockCoverage           | function | Merge large block matrices                                                    |
-
-## Features
-
-  - [X] Built for Ethereum using [Web3](https://github.com/ethereum/web3.js/).
-  - [X] Implements [Graph Protocol](https://github.com/graphprotocol) to read blockchain.
-## Changelog
-
-### 2022.02.17
-
-> v0.0.1 \* Matrix, color block, drag
-
-[npm]: https://img.shields.io/npm/v/postcss-load-config.svg
-[npm-url]: https://npmjs.com/package/postcss-load-config
-[node]: https://img.shields.io/node/v/postcss-load-plugins.svg
-[node-url]: https://nodejs.org/
