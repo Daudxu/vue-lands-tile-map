@@ -4,7 +4,7 @@
 
 [![npm][npm]][npm-url]
 [![node][node]][node-url]
-
+![npm](https://img.shields.io/npm/dt/vue-lands-tile-map?label=NPM%20downloads)
 
 
 ### NFT Metaverse Lands Vue Tile Map Component
