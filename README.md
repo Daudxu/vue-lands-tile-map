@@ -59,7 +59,7 @@ Vue.use(VueLandsTileMap);
     </div>
 
   </div>
-</template>
+</template> 
 
 <script>
 
